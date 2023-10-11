@@ -17,4 +17,11 @@ router.post("/choice", async (req, res) => {
 
   return res.status(200).send(result);
 });
+
+router.post("/img", async (req, res) => {
+  const img = req.body;
+  const result = await aiService.getImg(img);
+
+  return res.status(200).send(result);
+});
 module.exports = router;

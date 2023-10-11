@@ -1,7 +1,8 @@
 require("dotenv").config();
+const { response } = require("express");
 const OpenAI = require("openai");
 const openai = new OpenAI({
-  apiKey: process.env.AI_APIKEY,
+  apiKey: process.env.AI_APIKEY3,
 });
 class AiService {
   async getStory(DTO) {
@@ -11,7 +12,7 @@ class AiService {
         messages: [
           {
             role: "user",
-            content: `"${DTO.question}" 이 다음에 이어질 스토리를 100자 이하로 적어 줘.`,
+            content: `"${DTO.question}" 이 다음에 이어질 스토리를 50자 이하로 적어 줘.`,
           },
         ],
       });
@@ -39,6 +40,15 @@ class AiService {
       console.log(err);
       return 500;
     }
+  }
+
+  async getImg(req) {
+    const { img } = req;
+    console.log(img);
+    const response = await openai.images.generate({
+      prompt: img,
+    });
+    return response.data.data[0].url;
   }
 }
 
