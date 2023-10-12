@@ -63,6 +63,7 @@ class AiService {
         },
       ],
     });
+    console.log(translate.choices[0].message.content);
     const response = await openai.images.generate({
       prompt: translate.choices[0].message.content,
       size: "1024x1024",
