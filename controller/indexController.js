@@ -1,5 +1,6 @@
 const express = require("express");
-const router = express.Router();
+const asyncify = require("express-asyncify").default;
+const router = asyncify(express.Router());
 const AI = require("./aiController");
 
 router.use("/ai", AI);

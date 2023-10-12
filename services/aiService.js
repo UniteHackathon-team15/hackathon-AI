@@ -43,10 +43,28 @@ class AiService {
     }
   }
 
-  async getImg(req) {
-    const { img } = req;
+  async getImg(img) {
+    // const { img } = req;
     const response = await openai.images.generate({
       prompt: img,
+      size: "1024x1024",
+    });
+
+    return response.data[0].url;
+  }
+
+  async getTranslatedImg(img) {
+    const translate = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        {
+          role: "user",
+          content: `"${img}" 를 영어로 번역만 해 줘.`,
+        },
+      ],
+    });
+    const response = await openai.images.generate({
+      prompt: translate.choices[0].message.content,
       size: "1024x1024",
     });
     return response.data[0].url;
