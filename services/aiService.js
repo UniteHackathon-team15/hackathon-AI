@@ -1,9 +1,10 @@
 require("dotenv").config();
-const { response } = require("express");
 const OpenAI = require("openai");
+
 const openai = new OpenAI({
-  apiKey: process.env.AI_APIKEY3,
+  apiKey: process.env.AI_APIKEY,
 });
+
 class AiService {
   async getStory(DTO) {
     try {
@@ -44,11 +45,11 @@ class AiService {
 
   async getImg(req) {
     const { img } = req;
-    console.log(img);
     const response = await openai.images.generate({
       prompt: img,
+      size: "1024x1024",
     });
-    return response.data.data[0].url;
+    return response.data[0].url;
   }
 }
 

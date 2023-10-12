@@ -4,7 +4,7 @@ const router = express.Router();
 
 const aiService = new AiService();
 
-router.post("/story", async (req, res) => {
+router.get("/story", async (req, res) => {
   const DTO = req.body;
   const result = await aiService.getStory(DTO);
 
@@ -18,10 +18,11 @@ router.post("/choice", async (req, res) => {
   return res.status(200).send(result);
 });
 
-router.post("/img", async (req, res) => {
-  const img = req.body;
-  const result = await aiService.getImg(img);
+router.post("/image", async (req, res) => {
+  const image = req.body;
+  const result = await aiService.getImg(image);
 
   return res.status(200).send(result);
 });
+
 module.exports = router;
