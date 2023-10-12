@@ -5,8 +5,15 @@ const router = asyncify(express.Router());
 
 const aiService = new AiService();
 
-router.get("/story", async (req, res) => {
+router.post("/firstStory", async (req, res) => {
   const DTO = req.body;
+  const result = await aiService.getFirstStory(DTO);
+
+  return res.status(200).send(result);
+});
+router.post("/story", async (req, res) => {
+  const DTO = req.body;
+  console.log(DTO);
   const result = await aiService.getStory(DTO);
 
   return res.status(200).send(result);
@@ -26,7 +33,7 @@ router.post("/image", async (req, res) => {
   return res.status(200).send(result);
 });
 
-router.post("/translateImage", async (req, res) => {
+router.post("/korImage", async (req, res) => {
   const { image } = req.body;
   const result = await aiService.getTranslatedImg(image);
   return res.status(200).send(result);

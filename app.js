@@ -6,7 +6,7 @@ const Index = require("./controller/aiController");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/ai", Index);
+app.use("/AI", Index);
 
 app.use((err, req, res, next) => {
   var e = err;
