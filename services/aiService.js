@@ -14,8 +14,8 @@ class AiService {
         messages: [
           {
             role: "user",
-            content: `Please write a story on a topic with “${DTO.question}” as the keyword in 100 characters or less, at least 3 sentences in Korean. End with a question to the reader. And 
-            Convert the recommended image feeling into text that fits this story is distinguished by 추천하는 이미지 배경: "" and printed together.`,
+            content: `Please write a story on a topic with “${DTO.question}” as the keyword in 50 characters or less, at least 3 sentences in Korean. End with a question to the reader. And 
+            Convert the recommended image feeling into text that fits this story is distinguished by 추천하는 이미지 배경: "" in 50 characters or less, and printed together.`,
           },
         ],
       });
@@ -33,7 +33,7 @@ class AiService {
         messages: [
           {
             role: "user",
-            content: `Please write the story that continues "${DTO.question}" in 100 characters or less in Korean, at least 2 sentences. End by asking a question about the situation. And write the appropriate background as 추천하는 배경: "".`,
+            content: `Please write the story that continues "${DTO.question}" in 50 characters or less in Korean, at least 2 sentences. End by asking a question about the situation. And write the appropriate background as 추천하는 배경: "" in 50 characters or less.`,
           },
         ],
       });

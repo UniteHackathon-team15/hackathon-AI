@@ -9,33 +9,33 @@ router.post("/firstStory", async (req, res) => {
   const DTO = req.body;
   const result = await aiService.getFirstStory(DTO);
 
-  return res.status(200).send(result);
+  return res.status(200).json({ result });
 });
 router.post("/story", async (req, res) => {
   const DTO = req.body;
   console.log(DTO);
   const result = await aiService.getStory(DTO);
 
-  return res.status(200).send(result);
+  return res.status(200).json({ result });
 });
 
 router.post("/choice", async (req, res) => {
   const DTO = req.body;
   const result = await aiService.getChoice(DTO);
 
-  return res.status(200).send(result);
+  return res.status(200).json({ result });
 });
 
 router.post("/image", async (req, res) => {
   const { image } = req.body;
   const result = await aiService.getImg(image);
 
-  return res.status(200).send(result);
+  return res.status(200).json({ result });
 });
 
 router.post("/korImage", async (req, res) => {
   const { image } = req.body;
   const result = await aiService.getTranslatedImg(image);
-  return res.status(200).send(result);
+  return res.status(200).json({ result });
 });
 module.exports = router;
